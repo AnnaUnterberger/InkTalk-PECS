@@ -1,35 +1,43 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Corpo com fundo gradiente pastel */
+/* Estilo base */
 body {
-  font-family: sans-serif;
-  background: linear-gradient(to bottom, #e1aeee, #eecc77);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Barra superior fixa */
-.top-bar {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
   background-color: #eecc77;
-  padding: 1rem;
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-  top: 0;
-  display: flex;
-  justify-content: flex-start;
 }
 
-/* Botão do menu */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 10px;
+  margin-bottom: 5rem;
+  font-family: 'inder', sans-serif;
+  padding: 1rem;
+}
+
+.menu-icon {
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 #menu-toggle {
   font-size: 1.5rem;
   background: none;
@@ -38,7 +46,6 @@ body {
   cursor: pointer;
 }
 
-/* Menu lateral - ocupa 100% da tela */
 .side-menu {
   position: fixed;
   top: 0;
@@ -80,50 +87,116 @@ body {
   text-decoration: underline;
 }
 
-/* Conteúdo principal com mascote */
-.main-content {
-  margin-top: 80px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.mascot-container {
+h1 {
+  font-size: 24px;
+  margin: 0;
   text-align: center;
+}
+
+.section-title {
+  font-size: 20px;
+  margin: 20px 0 10px;
+  font-family: 'inder', sans-serif;
+}
+
+/* Cartões */
+.card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  padding: 10px;
+  transition: transform 0.2s;
+  font-family: 'inder', sans-serif;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  overflow: hidden;
+
 }
 
-.mascot-img {
-  width: 400px;
-  max-width: 80vw;
+.card:hover {
+  transform: scale(1.02);
 }
 
-/* Removido efeito de “caixa” no desktop */
-@media (min-width: 768px) {
-  body {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
+.card.blue {
+  background-color: #cad6ff;
+  border: 2px solid #0932ff;
+}
+
+.card.pink {
+  background-color: #f3caff;
+  border: 2px solid #8409ff;
+}
+
+.card img {
+  width: clamp(100px, 10vw, 60px);
+  height: auto;
+  margin-right: 15px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.card span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
   }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row; /* Garante layout horizontal */
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap; /* Impede quebra de linha */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #555;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.description {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  color: #444;
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  background: linear-gradient(to right, #fffce0, #fff1b8);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .card img {
+    margin: 0 0 10px 0;
+  }
+
+  .card span {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+@media (max-width: 480px) {
+  .menu-icon {
+    font-size: 20px;
+  }
+
+  .card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card span {
+    font-size: 15px;
+  }
 }
